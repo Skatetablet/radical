@@ -12,11 +12,12 @@ const Reader = () => {
   const [weatherData, setWeatherData] = useState({ name: '', temp: 0 });
   const [tipoCambio, setTipoCambio] = useState(true);
 
+  const apiKey = import.meta.env.VITE_APP_WEATHER_KEY;
+
   //Fetch para la api del clima
   useEffect(() => {
     fetch(
-      'https://api.openweathermap.org/data/2.5/weather?lat=29.09&lon=-110.96&units=metric&appid={API KEY}'
-      // 🚨!!! AQUI AGREGAR EL API KEY DE WEATHER !!!🚨
+      `https://api.openweathermap.org/data/2.5/weather?lat=29.09&lon=-110.96&units=metric&appid=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {

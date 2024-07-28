@@ -16,7 +16,7 @@ const FixFetcher = () => {
 
   //Fetch datos a la api de Banxico
   const fetchData = async () => {
-    const token = '{TOKEN}';
+    const token = import.meta.env.VITE_FIX_TOKEN;
     const url = `http://localhost:3002/proxy?startDate=${startDate}&endDate=${endDate}&token=${token}`;
 
     try {
