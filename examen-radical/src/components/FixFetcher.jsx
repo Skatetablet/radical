@@ -5,6 +5,7 @@ const FixFetcher = () => {
   const [endDate, setEndDate] = useState('');
   const [data, setData] = useState(null);
 
+  // Se manejan las date pickers para el uso de la api
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value);
   };
@@ -13,9 +14,9 @@ const FixFetcher = () => {
     setEndDate(event.target.value);
   };
 
+  //Fetch datos a la api de Banxico
   const fetchData = async () => {
-    const token =
-      '154e0115ec78549b8f1cbaab5e1a24837d73d3f255be366dc6ffd0ffdab39a82';
+    const token = '{TOKEN}';
     const url = `http://localhost:3002/proxy?startDate=${startDate}&endDate=${endDate}&token=${token}`;
 
     try {
@@ -42,7 +43,7 @@ const FixFetcher = () => {
       <h2 className='text-2xl font-bold mb-4'>FIX Tipo de Cambio</h2>
       <div className='flex flex-col items-center mb-4'>
         <label className='mb-2'>
-          Start Date:
+          Fecha Inicial :
           <input
             type='date'
             value={startDate}
@@ -51,7 +52,7 @@ const FixFetcher = () => {
           />
         </label>
         <label>
-          End Date:
+          Fecha Final:
           <input
             type='date'
             value={endDate}

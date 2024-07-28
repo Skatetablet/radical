@@ -12,9 +12,11 @@ const Reader = () => {
   const [weatherData, setWeatherData] = useState({ name: '', temp: 0 });
   const [tipoCambio, setTipoCambio] = useState(true);
 
+  //Fetch para la api del clima
   useEffect(() => {
     fetch(
-      'https://api.openweathermap.org/data/2.5/weather?lat=29.09&lon=-110.96&units=metric&appid=ae947c55163b4092e1f7a3cd0c66d1f6'
+      'https://api.openweathermap.org/data/2.5/weather?lat=29.09&lon=-110.96&units=metric&appid={API KEY}'
+      // 🚨!!! AQUI AGREGAR EL API KEY DE WEATHER !!!🚨
     )
       .then((response) => response.json())
       .then((data) => {
@@ -27,10 +29,13 @@ const Reader = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  //Boton para renderizar la vista del tipo de cambio
   const viewTipoCambio = () => {
     setTipoCambio(!tipoCambio);
   };
 
+  //Funcion para leer un archivo excel y recibirlo como un arreglo
+  //De igual manera de implementa la adicion del campo de Suma Total
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -61,6 +66,7 @@ const Reader = () => {
     reader.readAsArrayBuffer(file);
   };
 
+  //Funciones para obtener el saldo actual más alto y el más bajo
   const highestSaldo = dataExcel.reduce(
     (max, obj) => {
       const saldoActual = parseInt(obj.SALDO_ACTUAL, 10);

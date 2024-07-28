@@ -3,9 +3,12 @@ const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
-const port = 3002; // Changed port number
+const port = 3002; // ** NO MODIFICAR EL NUMERO DE PUERTO **
 
 app.use(cors());
+
+/*SE TUVO QUE CREAR UN PROXY LOCAL PARA PODER CONSUMIR LA API DE BANXICO AL 
+ENCONTRAR PROBLEMAS CON CORS AL INTENTAR HACER EL FETCH DIRECTO */
 
 app.get('/proxy', async (req, res) => {
   const { startDate, endDate, token } = req.query;

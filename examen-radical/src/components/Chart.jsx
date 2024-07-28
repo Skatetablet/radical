@@ -14,6 +14,8 @@ import {
 function Chart({ dataExcel }) {
   const [chartData, setChartData] = useState([]);
 
+  //Se sacan los datos de estado y saldo actual.
+  //Se suman los saldos de un solo estado para que no se repitan los estados
   const aggregateChartData = (data) => {
     const aggregatedData = data.reduce((acc, item) => {
       const estado = item.ESTADO;
